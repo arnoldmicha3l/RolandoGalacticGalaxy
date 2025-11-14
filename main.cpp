@@ -22,7 +22,7 @@ using namespace std;
 // -----------------------------------------------------------------------------
 // Utility: typewriter-style text with SPACE-to-skip *current* string
 // -----------------------------------------------------------------------------
-void typeText(const string &text, int delayMs = 15) {
+void typeText(const string &text, int delayMs = 25) {
     bool skipThisString = false;
 
     for (char c : text) {
@@ -56,7 +56,7 @@ void typeText(const string &text, int delayMs = 15) {
 // -----------------------------------------------------------------------------
 void showIntro() {
     cout << "=================================================\n";
-    cout << "         ROLANDO'S GALACTIC GRAVEYARD\n";
+    cout << "         RROLANDO'S GALACTIC GRAVEYARD\n";
     cout << "=================================================\n\n";
 
     typeText("In a forgotten corner of the cosmos, wrecked warships drift in silence.\n", 25);
