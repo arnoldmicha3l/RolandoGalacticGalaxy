@@ -4,6 +4,7 @@
 #include <iostream>
 #include <limits>
 #include <string>
+#include <cstdlib>
 #include "Inventory.h"
 
 using namespace std;
@@ -16,6 +17,7 @@ public:
     void open(Inventory& inv) {
         int choice = 0;
         do {
+            system("cls");
             typeText("\n===== SHOP =====\n", 10);
             typeText("Gold: " + to_string(inv.getGold()) + "\n", 10);
             typeText("1. Buy Healing Potion (50 gold)\n", 5);

@@ -33,18 +33,16 @@ public:
         typeText("Approaching " + wallName + "...\n", 25);
         typeText("The wreckage grows denser, and hostile signals flare in the dark.\n", 25);
         typeText("Press ENTER to begin your assault.\n", 20);
-        typeText("[Press SPACE during text to skip animations]\n\n", 15);
 
         // Wait for an actual ENTER, consuming any leftover whitespace
-        string dummy;
-        getline(cin >> ws, dummy);
+        system("pause");;
 
         while (!enemyQueue.empty() && character.getHealth() > 0) {
             Enemy* enemy = enemyQueue.current();
 
             typeText("\nA hostile signal locks onto your hull...\n", 20);
             typeText("A wild " + enemy->getName() + " appears!\n\n", 20);
-
+              system("cls");
             while (enemy->getHealth() > 0 && character.getHealth() > 0) {
                 // Display enemy and player status
                 typeText(enemy->toString(), 2);       // health bar with typewriter

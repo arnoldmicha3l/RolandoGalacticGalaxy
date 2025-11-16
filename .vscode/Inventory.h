@@ -19,7 +19,7 @@ class Inventory {
 private:
     vector<Item> items;        // DYNAMIC ARRAY
 
-    int gold = 0;
+    int gold = 50;
 
     int bossDropOneCount = 0;  // lifesteal unlock (if you use later)
     int bossDropTwoCount = 0;  // damage multiplier (if you use later)
@@ -30,8 +30,8 @@ private:
 public:
     Inventory() {
         // start with 1 HP potion and 1 MP potion
-        addItem("Healing Potion", 1);
-        addItem("Mana Potion", 1);
+        addItem("Healing Potion", 0);
+        addItem("Mana Potion", 0);
     }
 
     // dynamic array helpers

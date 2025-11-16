@@ -4,8 +4,10 @@
 #include <thread>
 #include <conio.h>   // for _kbhit and _getch (Windows / MinGW)
 #include <limits>
+#include <cstdlib>
 
 #include "Thorfinn.h"
+#include "zilong"
 #include "Musashi.h"
 #include "Player.h"
 #include "Inventory.h"
@@ -66,7 +68,6 @@ void showIntro() {
 
     typeText("Tonight, a new hunter enters the field.\n", 25);
     typeText("Choose your warrior and carve your legend among the ruins.\n\n", 25);
-    typeText("[TIP] Press SPACE during text to skip the animation for that line.\n\n", 15);
 }
 
 // -----------------------------------------------------------------------------
@@ -76,21 +77,24 @@ int askCharacterChoice() {
     int choice = 0;
 
     while (true) {
+        system("pause");
+        system("cls");
         typeText("Choose your character:\n", 10);
         typeText("  1. Thorfinn\n", 10);
         typeText("  2. Musashi\n", 10);
-        typeText("\nEnter choice (1-2): ", 10);
+        typeText("  3. Zilong\n", 10);
+        typeText("\nEnter choice (1-3): ", 10);
 
         if (!(cin >> choice)) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            typeText("\nInvalid input. Please enter 1 or 2.\n\n", 10);
+            typeText("\nInvalid input. Please enter 1 or 2 or 3\n\n", 10);
             continue;
         }
 
-        if (choice == 1 || choice == 2) break;
+        if (choice == 1 || choice == 2 || choice == 3) break;
 
-        typeText("\nPlease enter 1 or 2.\n\n", 10);
+        typeText("\nPlease enter 1 or 2. or 3\n\n", 10);
     }
 
     cout << "\n";
@@ -120,13 +124,16 @@ int main() {
     if (choice == 1) {
         hero = new Thorfinn("Thorfinn", 200, 100, 0);
         typeText("You have chosen Thorfinn, the relentless storm of steel.\n\n", 20);
-    } else {
+    } else if (choice == 2){
         hero = new Musashi("Musashi", 200, 100, 0);
         typeText("You have chosen Musashi, the silent blade of the void.\n\n", 20);
+    }else{
+        hero = new zilong("Zilong", 200, 100, 0);
+        typeText("You have chosen Zilong, the Supreme Warrior of the void.\n\n", 20);
+        
     }
-
     typeText("Your journey into the Galactic Graveyard begins...\n\n", 25);
-
+    system("pause");
     // =========================
     //      GAME PROGRESSION
     // =========================
@@ -135,10 +142,12 @@ int main() {
     typeText("Before you breach the first wall of wreckage, you dock with a supply drone.\n", 20);
     typeText("Time to prepare your loadout.\n\n", 20);
     shop.open(inv);
-
+    system("pause");
+        
     // WALL 1
     if (!wall1.run(*hero, inv, history)) {
         typeText("\nYour legend ends at the first wall of the Graveyard.\n", 25);
+        system("cls");
         delete hero;
         return 0;
     }
@@ -147,10 +156,13 @@ int main() {
     typeText("\nThe debris field behind you falls silent.\n", 25);
     typeText("Ahead, a second barrier of twisted hulls and hostile signals flickers into view.\n", 25);
     typeText("You reroute power, recalibrate your weapons, and steel yourself for the next assault.\n\n", 25);
+    system("pause");
+    system("cls");
 
     // Shop before Wall 2
     typeText("A roaming merchant vessel latches onto your airlock. Another chance to rearm.\n\n", 20);
     shop.open(inv);
+    system("cls");
 
     // WALL 2
     if (!wall2.run(*hero, inv, history)) {
