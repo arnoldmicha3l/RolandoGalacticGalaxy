@@ -58,7 +58,7 @@ void typeText(const string &text, int delayMs = 25) {
 // -----------------------------------------------------------------------------
 void showIntro() {
     cout << "=================================================\n";
-    cout << "         RROLANDO'S GALACTIC GRAVEYARD\n";
+    cout << "         ROLANDO'S GALACTIC GRAVEYARD\n";
     cout << "=================================================\n\n";
 
     typeText("In a forgotten corner of the cosmos, wrecked warships drift in silence.\n", 25);
